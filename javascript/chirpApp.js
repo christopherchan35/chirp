@@ -11,7 +11,7 @@ app.controller('mainController', function($scope){
   $scope.post = function(){
     $scope.newPost.created_at = Date.now();
     $scope.posts.push($scope.newPost);
-    $scope.newpost = {created_by: '', text: '', created_at: ''};
+    $scope.newPost = {created_by: '', text: '', created_at: ''};
   };
 });
 
