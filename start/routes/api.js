@@ -14,7 +14,7 @@ router.route('/posts')
   .post(function(req, res){
     // temp solution
     res.send({message: 'TODO Create a new post'});
-  });
+  })
 
 router.route('/posts/:id')
   // return a particular post
