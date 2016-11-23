@@ -8,15 +8,15 @@ module.exports = function(passport){
 
     // Passport needs to be able to serialize and deserialize users to support persistent login sessions
     passport.serializeUser(function(user, done) {
-        console.log('serializing user:',user.username);
-        //return the unique id for the user
-        done(null, user.username);
+      console.log('serializing user:',user.username);
+      //return the unique id for the user
+      done(null, user.username);
     });
 
     //Desieralize user will call with the unique id provided by serializeuser
     passport.deserializeUser(function(username, done) {
 
-        return done(null, users[username]);
+      return done(null, users[username]);
 
     });
 
@@ -39,7 +39,7 @@ module.exports = function(passport){
                 return done(null, false)
             }
         }
-    ));
+));
 
     passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
@@ -51,6 +51,7 @@ module.exports = function(passport){
                 return done(null, false);
             }
 
+            //store user in memory
             users[username] = {
                 username: username,
                 password: createHash(password)
@@ -59,7 +60,7 @@ module.exports = function(passport){
             console.log(users[username].username + ' Registration successful');
             return done(null, users[username]);
         })
-    );
+);
 
     var isValidPassword = function(user, password){
         return bCrypt.compareSync(password, user.password);
